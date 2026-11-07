@@ -1,0 +1,6 @@
+# pls writes these when run on this repo as its home (PLS_HOME=.)
+history.jsonl
+jobs/
+collections/
+collections.json
+.DS_Store

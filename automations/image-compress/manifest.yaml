@@ -1,0 +1,23 @@
+name: Compress images
+description: Compress images in a folder to a lower quality, reducing file size but keeping their dimensions
+entry: run.sh
+examples:
+  - shrink my screenshots
+  - make the jpgs on my desktop smaller
+  - make my images smaller for the web
+params:
+  - name: folder
+    type: path
+    default: ~/Desktop
+    description: Folder containing the images
+  - name: quality
+    type: int
+    min: 1
+    max: 100
+    default: 80
+    description: Output quality percent
+  - name: format
+    type: enum
+    options: [jpg, heic, png]
+    default: jpg
+    description: Which images to compress - png for screenshots (saved as smaller JPEG copies), jpg for photos, heic for iPhone photos
