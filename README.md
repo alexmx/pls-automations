@@ -142,7 +142,7 @@ If you have an automation of your own with the same id, yours wins, and this one
 | [`profile-info`](automations/profile-info.sh) | “what's in this provisioning profile ~/Downloads/App.mobileprovision” | Show what's in an iOS or macOS provisioning profile (app id, team, type, expiry, devices, entitlements), or list the installed profiles and which have expired |  |
 | [`app-signature`](automations/app-signature.sh) | “show the entitlements of ~/Desktop/MyApp.app” | Show how an app is code signed: who signed it, what kind of signature, whether it's valid and notarized, and its entitlements |  |
 | [`xcode-switch`](automations/xcode-switch.sh) | “switch to Xcode beta” | Switch the active Xcode (xcode-select) between the installed versions, or list them and show which one is in use | asks first for switch; needs your password (sudo) to switch |
-| [`clean-derived-data`](automations/clean-derived-data.sh) | “clear derived data” | Delete Xcode's DerivedData to fix stale builds and free up disk space | asks first; shows what it would do |
+| [`xcode-cleanup`](automations/xcode-cleanup.sh) | “Xcode is hogging space, clean it up” | Free the disk space Xcode piles up: DerivedData (also fixes stale builds), device support files, old simulators whose iOS version is no longer installed and simulator caches, and Swift package caches; archives are kept | asks first; shows what it would do |
 
 ### Productivity
 
