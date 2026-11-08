@@ -128,10 +128,16 @@ If you have an automation of your own with the same id, yours wins, and this one
 | Automation | Ask | What it does | Notes |
 |---|---|---|---|
 | [`brew-upgrade`](automations/brew-upgrade.sh) | “update brew” | Update Homebrew, upgrade all installed packages, and clean up old versions and unused dependencies | needs Homebrew |
-| [`clean-derived-data`](automations/clean-derived-data.sh) | “clear derived data” | Delete Xcode's DerivedData to fix stale builds and free up disk space | asks first; shows what it would do |
-| [`simulators`](automations/simulators.sh) | “boot the iPhone 17 simulator” | List, boot, shut down or erase iOS simulators | asks first for erase; needs Xcode |
 | [`serve-folder`](automations/serve-folder.sh) | “serve this folder” | Serve a folder over HTTP on a local port, to preview a website or share files, until Ctrl-C |  |
 | [`open-repo-page`](automations/open-repo-page.sh) | “open this repo on github” | Open the current git repository's page on GitHub or GitLab in the browser |  |
+
+### Apple development
+
+| Automation | Ask | What it does | Notes |
+|---|---|---|---|
+| [`simulators`](automations/simulators.sh) | “boot the iPhone 17 simulator” | List, boot, shut down or erase iOS simulators | asks first for erase; needs Xcode |
+| [`sim-open-url`](automations/sim-open-url.sh) | “open myapp://settings in the simulator” | Open a link or deep link (a custom URL scheme) in the running iOS simulator, to test how an app handles it | needs Xcode |
+| [`clean-derived-data`](automations/clean-derived-data.sh) | “clear derived data” | Delete Xcode's DerivedData to fix stale builds and free up disk space | asks first; shows what it would do |
 
 ### Productivity
 
