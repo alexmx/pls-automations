@@ -144,6 +144,12 @@ If you have an automation of your own with the same id, yours wins, and this one
 | [`xcode-switch`](automations/xcode-switch.sh) | “switch to Xcode beta” | Switch the active Xcode (xcode-select) between the installed versions, or list them and show which one is in use | asks first for switch; needs your password (sudo) to switch |
 | [`xcode-cleanup`](automations/xcode-cleanup.sh) | “Xcode is hogging space, clean it up” | Free the disk space Xcode piles up: DerivedData (also fixes stale builds), device support files, old simulators whose iOS version is no longer installed and simulator caches, and Swift package caches; archives are kept | asks first; shows what it would do |
 
+### Ghostty
+
+| Automation | Ask | What it does | Notes |
+|---|---|---|---|
+| [`ghostty-workspace`](automations/ghostty-workspace.sh) | “open a dev workspace for ~/Projects/quick” | Open a folder in a new Ghostty tab split into three panes: a shell, lazygit and another shell | needs Ghostty 1.3+; lazygit, if you want it in a repo |
+
 ### Productivity
 
 | Automation | Ask | What it does | Notes |
