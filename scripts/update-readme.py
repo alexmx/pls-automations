@@ -38,18 +38,19 @@ def notes(a):
     if a["background"]:
         out.append("runs in the background")
     if a["id"] in NEEDS_SHORTCUT:
-        out.append(f"needs the “{NEEDS_SHORTCUT[a['id']]}” Shortcut")
+        out.append(f"needs the [“{NEEDS_SHORTCUT[a['id']]}” Shortcut](#setting-up-focus-and-bluetooth)")
     if a["id"] in NEEDS:
         out.append(f"needs {NEEDS[a['id']]}")
     return "; ".join(out)
 
 lines = []
 for section, ids in SECTIONS.items():
-    lines += [f"### {section}", "", "| Automation | What it does | Notes |", "|---|---|---|"]
+    lines += [f"### {section}", "", "| Automation | Ask | What it does | Notes |", "|---|---|---|---|"]
     for id in ids:
         a = automations[id]
         path = pathlib.Path(a["source"]).relative_to(ROOT)
-        lines.append(f"| [`{id}`]({path}) | {a['description']} | {notes(a)} |")
+        ask = f"“{a['examples'][0]}”" if a["examples"] else ""
+        lines.append(f"| [`{id}`]({path}) | {ask} | {a['description']} | {notes(a)} |")
     lines.append("")
 
 readme = ROOT / "README.md"

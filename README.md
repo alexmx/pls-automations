@@ -1,34 +1,161 @@
 # pls automations
 
-59 ready-made automations for [pls](https://github.com/alexmx/pls): Mac settings, sound and music, the network,
-files and images, the clipboard, apps, developer chores and everyday reminders. Ask for them in plain words —
-`pls "it's too bright"`, `pls "free up port 3000"`, `pls "shrink my screenshots"` — or run them by name.
+**Everyday Mac automations for [pls](https://github.com/alexmx/pls), ready to ask for in plain words.** Mac
+settings, sound and music, the network, files and images, the clipboard, apps, developer chores and reminders.
 
-Each one is a short shell script or AppleScript you can read before you trust it. Each was tested against the model
-pls uses, so its description, examples and params lead requests to it and fill its values correctly.
-
-## Install
-
-```sh
-pls collection add alexmx/pls-automations                    # install; everything starts off, and it asks to review
-pls collection add git@github.com:alexmx/pls-automations.git # over SSH, with your GitHub key (for a private copy)
-pls collection review                                        # read what's off and turn on what you trust
-pls collection update                                        # later: get changes; what changed is off until reviewed
-pls collection disable focus                                 # turn one off
+```bash
+pls "it's too bright"
+pls "free up port 3000"
+pls "keep my mac awake for 2 hours"
+pls "what's taking up space?"
+pls "remind me in 20 minutes to check the oven"
 ```
 
-Nothing runs until you approve it, and an approval is for the files as you read them: an update that changes one
-turns it off until you review it again. Your own automations always win: if you have one with the same id, this
-collection's is still there as `alexmx/pls-automations/<id>`.
+- **Read before you trust.** Each one is a short shell script or AppleScript, and none runs until you've looked at it
+  and turned it on.
+- **Tested against the model.** Each one's description, examples and params were checked against the on-device model
+  pls uses, so plain requests find it and fill its values correctly.
+
+## Get started
+
+Install the collection, turn one on and ask for it:
+
+```bash
+pls collection add alexmx/pls-automations   # everything starts off; answer n to review them later
+pls collection enable my-ip                  # read one and turn it on
+pls "what's my ip"
+```
+
+Then:
+
+```bash
+pls collection review                        # read what's off and turn on what you trust
+pls collection update                        # get changes; what changed is off until you review it
+pls collection disable focus                 # turn one off
+```
+
+An approval is for the files as you read them, so an update that changes one turns it off until you review it again.
+If you have an automation of your own with the same id, yours wins, and this one is still there as
+`alexmx/pls-automations/<id>`.
 
 ## Requirements
 
 - macOS 26 and [pls](https://github.com/alexmx/pls)
-- A few need more, listed in the Notes column below: Homebrew for `brew-upgrade`, Xcode for `simulators`, your
-  password for the two that use `sudo`, or a permission macOS asks for the first time (Accessibility for
-  `lock-screen`, Screen Recording for `screen-recording`, and "control this app" prompts for the AppleScript ones).
+- A few need more, listed in the Notes column: Homebrew, Xcode, your password for `sudo`, or a permission macOS asks
+  for the first time (Accessibility, Screen Recording, or "control this app" for the AppleScript ones)
+- `focus` and `bluetooth` need a Shortcut you build once; see [below](#setting-up-focus-and-bluetooth)
 
-### Shortcuts for `focus` and `bluetooth`
+## Automations
+
+<!-- automations:start -->
+
+### System
+
+| Automation | Ask | What it does | Notes |
+|---|---|---|---|
+| [`dark-mode`](automations/dark-mode.applescript) | “it's too bright” | Switch the system appearance between dark and light |  |
+| [`keep-awake`](automations/keep-awake.sh) | “keep my mac awake for 2 hours” | Keep the Mac and its display awake for a number of minutes, or let it sleep again | runs in the background |
+| [`sleep-display`](automations/sleep-display.sh) | “turn off the screen” | Turn the display off now, leaving everything running |  |
+| [`lock-screen`](automations/lock-screen.applescript) | “lock my mac” | Lock the Mac now, so it needs your password to get back in | needs Accessibility permission |
+| [`set-wallpaper`](automations/set-wallpaper.sh) | “set my wallpaper to ~/Pictures/beach.jpg” | Set the desktop picture to an image file |  |
+| [`hidden-files`](automations/hidden-files.sh) | “show hidden files” | Show or hide hidden files (dotfiles) in Finder |  |
+| [`dock-autohide`](automations/dock-autohide.sh) | “hide the dock” | Turn Dock auto-hiding on or off |  |
+| [`screenshot-folder`](automations/screenshot-folder.sh) | “save screenshots to ~/Pictures/Screenshots” | Change the folder new screenshots are saved in, or show where they go |  |
+| [`screenshot-format`](automations/screenshot-format.sh) | “make screenshots jpg” | Change the setting for which file format future screenshots are saved in (existing files stay as they are) |  |
+| [`focus`](automations/focus.sh) | “do not disturb for an hour” | Turn a macOS Focus mode on or off, optionally for a number of minutes | needs the [“Set Focus” Shortcut](#setting-up-focus-and-bluetooth) |
+| [`bluetooth`](automations/bluetooth.sh) | “turn off bluetooth” | Turn Bluetooth on or off, or restart it | needs the [“Set Bluetooth” Shortcut](#setting-up-focus-and-bluetooth) |
+| [`low-power-mode`](automations/low-power-mode.sh) | “turn on low power mode” | Turn Low Power Mode on or off to save battery | needs your password (sudo) |
+
+### Sound and music
+
+| Automation | Ask | What it does | Notes |
+|---|---|---|---|
+| [`set-volume`](automations/set-volume.applescript) | “set the volume to 30” | Set the sound output volume to a level from 0 to 100 |  |
+| [`mute`](automations/mute.applescript) | “mute” | Mute or unmute the sound, keeping the volume level |  |
+| [`apple-music-control`](automations/apple-music-control.applescript) | “pause the music” | Play, pause, skip or go back a track in the Music app |  |
+| [`apple-music-playlist`](automations/apple-music-playlist.sh) | “play my Chill playlist” | Play a playlist from the Music app by name |  |
+| [`apple-music-now-playing`](automations/apple-music-now-playing.applescript) | “what's playing?” | Show what's playing in the Music app |  |
+| [`say`](automations/say.sh) | “say hello world” | Speak or announce text out loud with the Mac's text-to-speech voice |  |
+
+### Network
+
+| Automation | Ask | What it does | Notes |
+|---|---|---|---|
+| [`wifi`](automations/wifi.sh) | “turn off wifi” | Turn Wi-Fi on or off, or restart it |  |
+| [`flush-dns`](automations/flush-dns.sh) | “flush dns” | Clear the DNS cache, for when websites won't load or still point to their old address | needs your password (sudo) |
+| [`speed-test`](automations/speed-test.sh) | “how fast is my internet?” | Measure the internet connection's download and upload speed |  |
+| [`my-ip`](automations/my-ip.sh) | “what's my IP?” | Show this Mac's IP address on the local network and on the internet |  |
+| [`kill-port`](automations/kill-port.sh) | “free up port 3000” | Kill whatever process is listening on a TCP port | asks first; shows what it would do |
+| [`ports-in-use`](automations/ports-in-use.sh) | “what's using port 5432?” | List which apps are listening on which TCP ports, without stopping anything |  |
+| [`ping-host`](automations/ping-host.sh) | “ping google.com” | Check whether a host or website is reachable and how fast it answers |  |
+
+### Files
+
+| Automation | Ask | What it does | Notes |
+|---|---|---|---|
+| [`clean-downloads`](automations/clean-downloads.sh) | “clean up my downloads” | Trash old files in Downloads that haven't changed for a number of days, to free up space | asks first; shows what it would do |
+| [`image-compress`](automations/image-compress) | “shrink my screenshots” | Compress images in a folder to a lower quality, reducing file size but keeping their dimensions |  |
+| [`image-resize`](automations/image-resize.sh) | “resize the photos in ~/Pictures/trip to 1200 pixels” | Resize images in a folder to smaller pixel dimensions (width and height) |  |
+| [`image-convert`](automations/image-convert.sh) | “convert my iPhone photos to jpg” | Convert images in a folder to another file format |  |
+| [`video-convert`](automations/video-convert.sh) | “make this video smaller: ~/Movies/demo.mov” | Shrink or convert a video file (.mov, .mp4) to a smaller size or another format, keeping the original |  |
+| [`zip`](automations/zip.sh) | “zip ~/Projects/site” | Zip a file or folder into a .zip archive next to it |  |
+| [`unzip`](automations/unzip.sh) | “unzip ~/Downloads/fonts.zip” | Extract a .zip archive next to it |  |
+| [`large-files`](automations/large-files.sh) | “what's taking up space?” | List the biggest files in a folder and its subfolders, to see what's taking up space |  |
+| [`organize-folder`](automations/organize-folder.sh) | “organize my downloads” | Sort the files in a folder into subfolders by type: Images, Documents, Videos, Audio, Archives, Installers, Other | asks first; shows what it would do |
+| [`empty-trash`](automations/empty-trash.applescript) | “empty the trash” | Empty the Trash, permanently deleting what's in it | asks first; shows what it would do |
+| [`eject-disks`](automations/eject-disks.applescript) | “eject all disks” | Safely eject all external drives and disk images |  |
+
+### Clipboard and text
+
+| Automation | Ask | What it does | Notes |
+|---|---|---|---|
+| [`plain-clipboard`](automations/plain-clipboard.sh) | “make the clipboard plain text” | Remove formatting from the copied text, so it pastes as plain text |  |
+| [`clipboard-to-file`](automations/clipboard-to-file.sh) | “save the clipboard to a file” | Save the copied text to a file |  |
+| [`new-uuid`](automations/new-uuid.sh) | “new uuid” | Generate a new UUID and copy it to the clipboard |  |
+| [`pretty-json`](automations/pretty-json.sh) | “pretty print the json I copied” | Format the JSON on the clipboard with indentation, or say why it isn't valid JSON |  |
+| [`count-words`](automations/count-words.sh) | “how many words did I copy?” | Count the words, characters and lines in the copied text |  |
+
+### Apps
+
+| Automation | Ask | What it does | Notes |
+|---|---|---|---|
+| [`quit-apps`](automations/quit-apps.sh) | “quit everything” | Quit all open apps except the ones the request names | asks first; shows what it would do |
+| [`force-quit`](automations/force-quit.sh) | “force quit Xcode” | Force-quit one app that's frozen or not responding, losing its unsaved work | asks first; shows what it would do |
+| [`hide-apps`](automations/hide-apps.applescript) | “hide everything else” | Hide every app except the one in front, to clear the screen |  |
+
+### Developer
+
+| Automation | Ask | What it does | Notes |
+|---|---|---|---|
+| [`brew-upgrade`](automations/brew-upgrade.sh) | “update brew” | Update Homebrew, upgrade all installed packages, and clean up old versions and unused dependencies | needs Homebrew |
+| [`clean-derived-data`](automations/clean-derived-data.sh) | “clear derived data” | Delete Xcode's DerivedData to fix stale builds and free up disk space | asks first; shows what it would do |
+| [`simulators`](automations/simulators.sh) | “boot the iPhone 17 simulator” | List, boot, shut down or erase iOS simulators | asks first for erase; needs Xcode |
+| [`serve-folder`](automations/serve-folder.sh) | “serve this folder” | Serve a folder over HTTP on a local port, to preview a website or share files, until Ctrl-C |  |
+| [`open-repo-page`](automations/open-repo-page.sh) | “open this repo on github” | Open the current git repository's page on GitHub or GitLab in the browser |  |
+
+### Productivity
+
+| Automation | Ask | What it does | Notes |
+|---|---|---|---|
+| [`new-note`](automations/new-note.sh) | “new note called groceries” | Create a note in Apple Notes and open it |  |
+| [`remind-me`](automations/remind-me.applescript) | “remind me to call mom” | Add a reminder to the Reminders app, optionally due in a number of minutes |  |
+| [`timer`](automations/timer.sh) | “set a timer for 10 minutes” | Set a quick timer that notifies you with a sound after a number of minutes |  |
+| [`pomodoro`](automations/pomodoro.sh) | “start a pomodoro” | Run Pomodoro focus sessions, work and break rounds with a notification at each switch, or stop them | runs in the background |
+| [`screen-recording`](automations/screen-recording.sh) | “record my screen for a minute” | Record the screen to a video file for a number of seconds, without sound | needs Screen Recording permission |
+
+### Maintenance
+
+| Automation | Ask | What it does | Notes |
+|---|---|---|---|
+| [`disk-space`](automations/disk-space.sh) | “how much disk space is free?” | Show how much free disk space is left on each drive |  |
+| [`battery`](automations/battery.sh) | “how much battery do I have?” | Show the battery level, whether it's charging, how long is left, and the battery's health |  |
+| [`time-machine-backup-now`](automations/time-machine-backup-now.sh) | “back up my mac now” | Start a Time Machine backup now, or show when the last one finished |  |
+| [`check-updates`](automations/check-updates.sh) | “are there any macOS updates?” | Check for macOS and Apple software updates, without installing anything |  |
+| [`shutdown-later`](automations/shutdown-later.sh) | “shut down in an hour” | Shut down or restart the Mac now or after some minutes, or cancel a pending one | asks first for shutdown or restart; runs in the background |
+
+<!-- automations:end -->
+
+## Setting up `focus` and `bluetooth`
 
 macOS has no command for Focus modes or Bluetooth, so these two run a Shortcut you build once in the Shortcuts app.
 Until you do, they say so and stop.
@@ -41,127 +168,19 @@ Until you do, they say so and stop.
   off. The choices are `do-not-disturb`, `work`, `personal`, `sleep`, `morning` and `reduce-interruptions`; trim the
   `@pls.param mode` line in `automations/focus.sh` to the ones you have.
 
-## Automations
+## Make one yours
 
-<!-- automations:start -->
+Copy it into `~/.config/pls/automations` and change it there: your copy wins, and updates leave it alone.
 
-### System
+## Contributing
 
-| Automation | What it does | Notes |
-|---|---|---|
-| [`dark-mode`](automations/dark-mode.applescript) | Switch the system appearance between dark and light |  |
-| [`keep-awake`](automations/keep-awake.sh) | Keep the Mac and its display awake for a number of minutes, or let it sleep again | runs in the background |
-| [`sleep-display`](automations/sleep-display.sh) | Turn the display off now, leaving everything running |  |
-| [`lock-screen`](automations/lock-screen.applescript) | Lock the Mac now, so it needs your password to get back in | needs Accessibility permission |
-| [`set-wallpaper`](automations/set-wallpaper.sh) | Set the desktop picture to an image file |  |
-| [`hidden-files`](automations/hidden-files.sh) | Show or hide hidden files (dotfiles) in Finder |  |
-| [`dock-autohide`](automations/dock-autohide.sh) | Turn Dock auto-hiding on or off |  |
-| [`screenshot-folder`](automations/screenshot-folder.sh) | Change the folder new screenshots are saved in, or show where they go |  |
-| [`screenshot-format`](automations/screenshot-format.sh) | Change the setting for which file format future screenshots are saved in (existing files stay as they are) |  |
-| [`focus`](automations/focus.sh) | Turn a macOS Focus mode on or off, optionally for a number of minutes | needs the “Set Focus” Shortcut |
-| [`bluetooth`](automations/bluetooth.sh) | Turn Bluetooth on or off, or restart it | needs the “Set Bluetooth” Shortcut |
-| [`low-power-mode`](automations/low-power-mode.sh) | Turn Low Power Mode on or off to save battery | needs your password (sudo) |
+Keep each automation self-contained (no paths into anyone's home, no files outside its own folder) and check it
+before opening a pull request:
 
-### Sound and music
-
-| Automation | What it does | Notes |
-|---|---|---|
-| [`set-volume`](automations/set-volume.applescript) | Set the sound output volume to a level from 0 to 100 |  |
-| [`mute`](automations/mute.applescript) | Mute or unmute the sound, keeping the volume level |  |
-| [`apple-music-control`](automations/apple-music-control.applescript) | Play, pause, skip or go back a track in the Music app |  |
-| [`apple-music-playlist`](automations/apple-music-playlist.sh) | Play a playlist from the Music app by name |  |
-| [`apple-music-now-playing`](automations/apple-music-now-playing.applescript) | Show what's playing in the Music app |  |
-| [`say`](automations/say.sh) | Speak or announce text out loud with the Mac's text-to-speech voice |  |
-
-### Network
-
-| Automation | What it does | Notes |
-|---|---|---|
-| [`wifi`](automations/wifi.sh) | Turn Wi-Fi on or off, or restart it |  |
-| [`flush-dns`](automations/flush-dns.sh) | Clear the DNS cache, for when websites won't load or still point to their old address | needs your password (sudo) |
-| [`speed-test`](automations/speed-test.sh) | Measure the internet connection's download and upload speed |  |
-| [`my-ip`](automations/my-ip.sh) | Show this Mac's IP address on the local network and on the internet |  |
-| [`kill-port`](automations/kill-port.sh) | Kill whatever process is listening on a TCP port | asks first; shows what it would do |
-| [`ports-in-use`](automations/ports-in-use.sh) | List which apps are listening on which TCP ports, without stopping anything |  |
-| [`ping-host`](automations/ping-host.sh) | Check whether a host or website is reachable and how fast it answers |  |
-
-### Files
-
-| Automation | What it does | Notes |
-|---|---|---|
-| [`clean-downloads`](automations/clean-downloads.sh) | Trash old files in Downloads that haven't changed for a number of days, to free up space | asks first; shows what it would do |
-| [`image-compress`](automations/image-compress) | Compress images in a folder to a lower quality, reducing file size but keeping their dimensions |  |
-| [`image-resize`](automations/image-resize.sh) | Resize images in a folder to smaller pixel dimensions (width and height) |  |
-| [`image-convert`](automations/image-convert.sh) | Convert images in a folder to another file format |  |
-| [`video-convert`](automations/video-convert.sh) | Shrink or convert a video file (.mov, .mp4) to a smaller size or another format, keeping the original |  |
-| [`zip`](automations/zip.sh) | Zip a file or folder into a .zip archive next to it |  |
-| [`unzip`](automations/unzip.sh) | Extract a .zip archive next to it |  |
-| [`large-files`](automations/large-files.sh) | List the biggest files in a folder and its subfolders, to see what's taking up space |  |
-| [`organize-folder`](automations/organize-folder.sh) | Sort the files in a folder into subfolders by type: Images, Documents, Videos, Audio, Archives, Installers, Other | asks first; shows what it would do |
-| [`empty-trash`](automations/empty-trash.applescript) | Empty the Trash, permanently deleting what's in it | asks first; shows what it would do |
-| [`eject-disks`](automations/eject-disks.applescript) | Safely eject all external drives and disk images |  |
-
-### Clipboard and text
-
-| Automation | What it does | Notes |
-|---|---|---|
-| [`plain-clipboard`](automations/plain-clipboard.sh) | Remove formatting from the copied text, so it pastes as plain text |  |
-| [`clipboard-to-file`](automations/clipboard-to-file.sh) | Save the copied text to a file |  |
-| [`new-uuid`](automations/new-uuid.sh) | Generate a new UUID and copy it to the clipboard |  |
-| [`pretty-json`](automations/pretty-json.sh) | Format the JSON on the clipboard with indentation, or say why it isn't valid JSON |  |
-| [`count-words`](automations/count-words.sh) | Count the words, characters and lines in the copied text |  |
-
-### Apps
-
-| Automation | What it does | Notes |
-|---|---|---|
-| [`quit-apps`](automations/quit-apps.sh) | Quit all open apps except the ones the request names | asks first; shows what it would do |
-| [`force-quit`](automations/force-quit.sh) | Force-quit one app that's frozen or not responding, losing its unsaved work | asks first; shows what it would do |
-| [`hide-apps`](automations/hide-apps.applescript) | Hide every app except the one in front, to clear the screen |  |
-
-### Developer
-
-| Automation | What it does | Notes |
-|---|---|---|
-| [`brew-upgrade`](automations/brew-upgrade.sh) | Update Homebrew, upgrade all installed packages, and clean up old versions and unused dependencies | needs Homebrew |
-| [`clean-derived-data`](automations/clean-derived-data.sh) | Delete Xcode's DerivedData to fix stale builds and free up disk space | asks first; shows what it would do |
-| [`simulators`](automations/simulators.sh) | List, boot, shut down or erase iOS simulators | asks first for erase; needs Xcode |
-| [`serve-folder`](automations/serve-folder.sh) | Serve a folder over HTTP on a local port, to preview a website or share files, until Ctrl-C |  |
-| [`open-repo-page`](automations/open-repo-page.sh) | Open the current git repository's page on GitHub or GitLab in the browser |  |
-
-### Productivity
-
-| Automation | What it does | Notes |
-|---|---|---|
-| [`new-note`](automations/new-note.sh) | Create a note in Apple Notes and open it |  |
-| [`remind-me`](automations/remind-me.applescript) | Add a reminder to the Reminders app, optionally due in a number of minutes |  |
-| [`timer`](automations/timer.sh) | Set a quick timer that notifies you with a sound after a number of minutes |  |
-| [`pomodoro`](automations/pomodoro.sh) | Run Pomodoro focus sessions, work and break rounds with a notification at each switch, or stop them | runs in the background |
-| [`screen-recording`](automations/screen-recording.sh) | Record the screen to a video file for a number of seconds, without sound | needs Screen Recording permission |
-
-### Maintenance
-
-| Automation | What it does | Notes |
-|---|---|---|
-| [`disk-space`](automations/disk-space.sh) | Show how much free disk space is left on each drive |  |
-| [`battery`](automations/battery.sh) | Show the battery level, whether it's charging, how long is left, and the battery's health |  |
-| [`time-machine-backup-now`](automations/time-machine-backup-now.sh) | Start a Time Machine backup now, or show when the last one finished |  |
-| [`check-updates`](automations/check-updates.sh) | Check for macOS and Apple software updates, without installing anything |  |
-| [`shutdown-later`](automations/shutdown-later.sh) | Shut down or restart the Mac now or after some minutes, or cancel a pending one | asks first for shutdown or restart; runs in the background |
-
-<!-- automations:end -->
-
-## Changing them
-
-To change one for yourself, copy it into `~/.config/pls/automations`: your copy wins, and updates leave it alone.
-
-To contribute, keep each automation self-contained (no paths into anyone's home, no files outside its own folder) and
-check it before opening a pull request:
-
-```sh
-PLS_HOME=. pls doctor                                # no problems
-PLS_HOME=. pls doctor --examples <id>                # every example picks it
-python3 scripts/update-readme.py                     # refresh the table above
+```bash
+PLS_HOME=. pls doctor                         # no problems
+PLS_HOME=. pls doctor --examples <id>         # every example picks it
+python3 scripts/update-readme.py              # refresh the table
 ```
 
 The formats, and how to write descriptions the model routes well, are in the
