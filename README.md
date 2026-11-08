@@ -152,6 +152,7 @@ If you have an automation of your own with the same id, yours wins, and this one
 | [`ghostty-split`](automations/ghostty-split.sh) | “split right” | Split the current Ghostty pane, opening the new pane in the current folder, and run a command in it if one is given | needs Ghostty 1.3+ |
 | [`ghostty-jump`](automations/ghostty-jump.sh) | “go to the terminal in ark” | Go to the open Ghostty terminal in a folder, or with a title, by bringing it to the front | needs Ghostty 1.3+ |
 | [`ghostty-ssh`](automations/ghostty-ssh.sh) | “ssh to build-mac” | Open a new Ghostty tab connected over SSH to a host | needs Ghostty 1.3+ |
+| [`ghostty-present`](automations/ghostty-present.sh) | “big terminal for a demo” | Open a new Ghostty window with a big font, for a demo or screen sharing; other windows keep theirs | needs Ghostty 1.3+ |
 
 ### Productivity
 
