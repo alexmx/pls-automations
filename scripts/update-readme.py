@@ -15,14 +15,14 @@ SECTIONS = {
     "Clipboard and text": ["plain-clipboard", "clipboard-to-file", "new-uuid", "pretty-json", "count-words"],
     "Apps": ["quit-apps", "force-quit", "hide-apps"],
     "Developer": ["brew-upgrade", "serve-folder", "open-repo-page"],
-    "Apple development": ["simulators", "sim-open-url", "sim-push", "clean-derived-data"],
+    "Apple development": ["simulators", "sim-open-url", "sim-push", "sim-appearance", "clean-derived-data"],
     "Productivity": ["new-note", "remind-me", "timer", "pomodoro", "screen-recording"],
     "Maintenance": ["disk-space", "battery", "time-machine-backup-now", "check-updates", "shutdown-later"],
 }
 NEEDS_SHORTCUT = {"focus": "Set Focus", "bluetooth": "Set Bluetooth"}
 NEEDS = {"brew-upgrade": "Homebrew", "flush-dns": "your password (sudo)", "low-power-mode": "your password (sudo)",
          "lock-screen": "Accessibility permission", "screen-recording": "Screen Recording permission",
-         "simulators": "Xcode", "sim-open-url": "Xcode", "sim-push": "Xcode"}
+         "simulators": "Xcode", "sim-open-url": "Xcode", "sim-push": "Xcode", "sim-appearance": "Xcode"}
 
 env = dict(os.environ, PLS_HOME=str(ROOT), PLS_MODEL="off")
 automations = {a["id"]: a for a in json.loads(subprocess.check_output([os.environ.get("PLS", "pls"), "list", "--json"], env=env))}
