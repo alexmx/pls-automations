@@ -12,6 +12,7 @@ pls uses, so its description, examples and params lead requests to it and fill i
 ```sh
 pls collection add alexmx/pls-automations                    # all of them
 pls collection add alexmx/pls-automations --only wifi,mute   # just some
+pls collection add git@github.com:alexmx/pls-automations.git # over SSH, with your GitHub key (for a private copy)
 pls collection update                                        # later: get changes; lists every automation that changed
 pls collection disable focus                                 # turn one off; it stays off across updates
 ```
