@@ -10,15 +10,16 @@ pls uses, so its description, examples and params lead requests to it and fill i
 ## Install
 
 ```sh
-pls collection add alexmx/pls-automations                    # all of them
-pls collection add alexmx/pls-automations --only wifi,mute   # just some
+pls collection add alexmx/pls-automations                    # install; everything starts off, and it asks to review
 pls collection add git@github.com:alexmx/pls-automations.git # over SSH, with your GitHub key (for a private copy)
-pls collection update                                        # later: get changes; lists every automation that changed
-pls collection disable focus                                 # turn one off; it stays off across updates
+pls collection review                                        # read what's off and turn on what you trust
+pls collection update                                        # later: get changes; what changed is off until reviewed
+pls collection disable focus                                 # turn one off
 ```
 
-Your own automations always win: if you have one with the same id, this collection's is still there as
-`alexmx/pls-automations/<id>`. Installing runs nothing; an update changes scripts that will run, so read what it lists.
+Nothing runs until you approve it, and an approval is for the files as you read them: an update that changes one
+turns it off until you review it again. Your own automations always win: if you have one with the same id, this
+collection's is still there as `alexmx/pls-automations/<id>`.
 
 ## Requirements
 
