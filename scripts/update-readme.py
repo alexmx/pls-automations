@@ -15,7 +15,7 @@ SECTIONS = {
     "Clipboard and text": ["plain-clipboard", "clipboard-to-file", "new-uuid", "pretty-json", "count-words"],
     "Apps": ["quit-apps", "force-quit", "hide-apps"],
     "Developer": ["brew-upgrade", "serve-folder", "open-repo-page"],
-    "Apple development": ["simulators", "sim-open-url", "sim-push", "sim-appearance", "clean-derived-data"],
+    "Apple development": ["simulators", "sim-open-url", "sim-push", "sim-appearance", "profile-info", "clean-derived-data"],
     "Productivity": ["new-note", "remind-me", "timer", "pomodoro", "screen-recording"],
     "Maintenance": ["disk-space", "battery", "time-machine-backup-now", "check-updates", "shutdown-later"],
 }

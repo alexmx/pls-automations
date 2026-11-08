@@ -139,6 +139,7 @@ If you have an automation of your own with the same id, yours wins, and this one
 | [`sim-open-url`](automations/sim-open-url.sh) | “open myapp://settings in the simulator” | Open a link or deep link (a custom URL scheme) in the running iOS simulator, to test how an app handles it | needs Xcode |
 | [`sim-push`](automations/sim-push.sh) | “send a test push to com.me.app saying Hello” | Send a test push notification to an app in the running iOS simulator, by its bundle id | needs Xcode |
 | [`sim-appearance`](automations/sim-appearance.sh) | “simulator dark mode” | Switch the running iOS simulators to dark or light mode, or change their text size (Dynamic Type), to check how an app's UI holds up; or show the current settings | needs Xcode |
+| [`profile-info`](automations/profile-info.sh) | “what's in this provisioning profile ~/Downloads/App.mobileprovision” | Show what's in an iOS or macOS provisioning profile (app id, team, type, expiry, devices, entitlements), or list the installed profiles and which have expired |  |
 | [`clean-derived-data`](automations/clean-derived-data.sh) | “clear derived data” | Delete Xcode's DerivedData to fix stale builds and free up disk space | asks first; shows what it would do |
 
 ### Productivity
