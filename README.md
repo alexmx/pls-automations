@@ -1,7 +1,8 @@
 # pls automations
 
 **Everyday Mac automations for [pls](https://github.com/alexmx/pls), ready to ask for in plain words.** Mac
-settings, sound and music, the network, files and images, the clipboard, apps, developer chores and reminders.
+settings, sound and music, the network, files and images, the clipboard, apps, Xcode and the simulator, Ghostty,
+developer chores and reminders.
 
 ```bash
 pls "it's too bright"
