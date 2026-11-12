@@ -149,7 +149,7 @@ If you have an automation of your own with the same id, yours wins, and this one
 
 | Automation | Ask | What it does | Notes |
 |---|---|---|---|
-| [`ghostty-workspace`](automations/ghostty-workspace.sh) | “open a dev workspace for ~/Projects/quick” | Open a folder in a new Ghostty tab split into three panes: a shell, lazygit and another shell | needs Ghostty 1.3+; lazygit, if you want it in a repo |
+| [`ghostty-workspace`](automations/ghostty-workspace.sh) | “new dev workspace” | Split the current Ghostty pane into a dev workspace: this shell on the left, lazygit top right and a smaller shell bottom right | needs Ghostty 1.3+; lazygit, if you want it in a repo |
 | [`ghostty-split`](automations/ghostty-split.sh) | “split right” | Split the current Ghostty pane, opening the new pane in the current folder, and run a command in it if one is given | needs Ghostty 1.3+ |
 | [`ghostty-jump`](automations/ghostty-jump.sh) | “go to the terminal in ark” | Go to the open Ghostty terminal in a folder, or with a title, by bringing it to the front | needs Ghostty 1.3+ |
 | [`ghostty-ssh`](automations/ghostty-ssh.sh) | “ssh to build-mac” | Open a new Ghostty tab connected over SSH to a host | needs Ghostty 1.3+ |
