@@ -131,6 +131,7 @@ If you have an automation of your own with the same id, yours wins, and this one
 | [`brew-upgrade`](automations/brew-upgrade.sh) | “update brew” | Update Homebrew, upgrade all installed packages, and clean up old versions and unused dependencies | needs Homebrew |
 | [`serve-folder`](automations/serve-folder.sh) | “serve this folder” | Serve a folder over HTTP on a local port, to preview a website or share files, until Ctrl-C |  |
 | [`open-repo-page`](automations/open-repo-page.sh) | “open this repo on github” | Open the current git repository's page on GitHub or GitLab in the browser |  |
+| [`git-prune-branches`](automations/git-prune-branches.sh) | “clean up merged branches” | Delete the local git branches of a repo that are merged into its default branch, or whose remote branch is gone after a merge | asks first; shows what it would do |
 
 ### Apple development
 
