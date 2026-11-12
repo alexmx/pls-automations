@@ -14,7 +14,7 @@ SECTIONS = {
               "large-files", "organize-folder", "empty-trash", "eject-disks"],
     "Clipboard and text": ["plain-clipboard", "clipboard-to-file", "new-uuid", "pretty-json", "count-words"],
     "Apps": ["quit-apps", "force-quit", "hide-apps"],
-    "Developer": ["brew-upgrade", "serve-folder", "open-repo-page", "git-prune-branches", "git-worktree"],
+    "Developer": ["brew-upgrade", "serve-folder", "open-repo-page", "git-prune-branches", "git-worktree", "git-worktree-clean"],
     "Apple development": ["simulators", "sim-open-url", "sim-push", "sim-appearance", "profile-info", "app-signature", "xcode-switch", "xcode-cleanup"],
     "Ghostty": ["ghostty-workspace", "ghostty-split", "ghostty-jump", "ghostty-ssh", "ghostty-present"],
     "Productivity": ["new-note", "remind-me", "timer", "pomodoro", "screen-recording"],

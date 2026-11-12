@@ -133,6 +133,7 @@ If you have an automation of your own with the same id, yours wins, and this one
 | [`open-repo-page`](automations/open-repo-page.sh) | “open this repo on github” | Open the current git repository's page on GitHub or GitLab in the browser |  |
 | [`git-prune-branches`](automations/git-prune-branches.sh) | “clean up merged branches” | Delete the local git branches of a repo that are merged into its default branch, or whose remote branch is gone after a merge | asks first; shows what it would do |
 | [`git-worktree`](automations/git-worktree.sh) | “new worktree for fix-login” | Start work on a git branch in its own worktree, a folder next to the repo, and open it in a new Ghostty tab; a new branch starts from the default branch | needs Ghostty 1.3+ for the tab |
+| [`git-worktree-clean`](automations/git-worktree-clean.sh) | “clean up my worktrees” | Remove a repo's extra git worktrees whose branch is merged into the default branch, or whose remote branch is gone after a merge, and delete those branches; worktrees with changes are kept | asks first; shows what it would do |
 
 ### Apple development
 
