@@ -14,14 +14,14 @@ SECTIONS = {
               "large-files", "organize-folder", "empty-trash", "eject-disks"],
     "Clipboard and text": ["plain-clipboard", "clipboard-to-file", "new-uuid", "pretty-json", "count-words"],
     "Apps": ["quit-apps", "force-quit", "hide-apps"],
-    "Developer": ["brew-upgrade", "serve-folder", "open-repo-page", "git-prune-branches"],
+    "Developer": ["brew-upgrade", "serve-folder", "open-repo-page", "git-prune-branches", "git-worktree"],
     "Apple development": ["simulators", "sim-open-url", "sim-push", "sim-appearance", "profile-info", "app-signature", "xcode-switch", "xcode-cleanup"],
     "Ghostty": ["ghostty-workspace", "ghostty-split", "ghostty-jump", "ghostty-ssh", "ghostty-present"],
     "Productivity": ["new-note", "remind-me", "timer", "pomodoro", "screen-recording"],
     "Maintenance": ["disk-space", "battery", "time-machine-backup-now", "check-updates", "shutdown-later"],
 }
 NEEDS_SHORTCUT = {"focus": "Set Focus", "bluetooth": "Set Bluetooth"}
-NEEDS = {"brew-upgrade": "Homebrew", "flush-dns": "your password (sudo)", "low-power-mode": "your password (sudo)",
+NEEDS = {"brew-upgrade": "Homebrew", "git-worktree": "Ghostty 1.3+ for the tab", "flush-dns": "your password (sudo)", "low-power-mode": "your password (sudo)",
          "lock-screen": "Accessibility permission", "screen-recording": "Screen Recording permission",
          "simulators": "Xcode", "sim-open-url": "Xcode", "sim-push": "Xcode", "sim-appearance": "Xcode", "xcode-switch": "your password (sudo) to switch",
          "ghostty-workspace": "Ghostty 1.3+; lazygit, if you want it in a repo", "ghostty-split": "Ghostty 1.3+", "ghostty-jump": "Ghostty 1.3+", "ghostty-ssh": "Ghostty 1.3+", "ghostty-present": "Ghostty 1.3+"}

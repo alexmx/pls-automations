@@ -132,6 +132,7 @@ If you have an automation of your own with the same id, yours wins, and this one
 | [`serve-folder`](automations/serve-folder.sh) | “serve this folder” | Serve a folder over HTTP on a local port, to preview a website or share files, until Ctrl-C |  |
 | [`open-repo-page`](automations/open-repo-page.sh) | “open this repo on github” | Open the current git repository's page on GitHub or GitLab in the browser |  |
 | [`git-prune-branches`](automations/git-prune-branches.sh) | “clean up merged branches” | Delete the local git branches of a repo that are merged into its default branch, or whose remote branch is gone after a merge | asks first; shows what it would do |
+| [`git-worktree`](automations/git-worktree.sh) | “new worktree for fix-login” | Start work on a git branch in its own worktree, a folder next to the repo, and open it in a new Ghostty tab; a new branch starts from the default branch | needs Ghostty 1.3+ for the tab |
 
 ### Apple development
 
